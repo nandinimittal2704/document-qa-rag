@@ -200,16 +200,16 @@ with st.sidebar:
                 st.session_state.sample_questions = []
                 st.rerun()
 
-# -----------------------------------------------------------------------------
+
 # MAIN APP TWO-COLUMN LAYOUT
-# -----------------------------------------------------------------------------
+
 col1, col2 = st.columns([0.35, 0.65])
 
-# =============================================================================
+
 # LEFT COLUMN - DOCUMENT PANEL (Controls, Settings, Uploading)
-# =============================================================================
+
 with col1:
-    st.header("📄 Document Panel")
+    st.header(" Document Panel")
     
     # 1. File uploader. Accepts both PDF and TXT.
     # Uses a dynamic key so we can clear/reset it programmatically.
@@ -278,10 +278,10 @@ with col1:
         st.markdown("---")
         st.markdown("#### Loaded Files Details")
         for name, data in st.session_state.loaded_docs.items():
-            st.info(f"📁 **{name}**\n- Size: {data['size_kb']:.1f} KB\n- Pages: {data['pages']}")
+            st.info(f" **{name}**\n- Size: {data['size_kb']:.1f} KB\n- Pages: {data['pages']}")
             
     # 4. Advanced settings expander
-    with st.expander("⚙️ Advanced settings", expanded=False):
+    with st.expander(" Advanced settings", expanded=False):
         # Slider for choosing chunk size
         chunk_size = st.slider(
             "Chunk size (characters)",
@@ -301,7 +301,7 @@ with col1:
             step=10,
             help="Overlap maintains context continuity across chunk transitions."
         )
-        st.caption("ℹ️ Smaller chunks = more precise, larger = more context")
+        st.caption(" Smaller chunks = more precise, larger = more context")
         
         # CHUNK VISUALIZER: Button to preview splitting before indexing
         if st.button("Preview chunks", key="preview_chunks_btn"):
@@ -413,9 +413,9 @@ with col1:
             "4. **LLM Grounding**: The top-4 matched text blocks are injected into Gemini's context, restricting its answers to the source text."
         )
 
-# =============================================================================
+
 # RIGHT COLUMN - CHAT PANEL (Conversation history, Q&A, Sources)
-# =============================================================================
+
 with col2:
     # Top bar containing header and Clear Chat button
     chat_top_col, chat_clear_col = st.columns([0.8, 0.2])
@@ -491,7 +491,7 @@ with col2:
     if st.session_state.messages:
         chat_log = export_chat_history()
         st.download_button(
-            label="📥 Export Chat History",
+            label=" Export Chat History",
             data=chat_log,
             file_name="chat_history.txt",
             mime="text/plain",
